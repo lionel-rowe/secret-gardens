@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 2018_11_19_075933) do
     t.datetime "start"
     t.datetime "end"
     t.text "use"
-    t.bigint "user_id"
+    t.bigint "guest_id"
     t.bigint "garden_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["garden_id"], name: "index_bookings_on_garden_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["guest_id"], name: "index_bookings_on_guest_id"
   end
 
   create_table "gardens", force: :cascade do |t|
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2018_11_19_075933) do
     t.integer "price"
     t.string "photo"
     t.string "location"
-    t.bigint "user_id"
+    t.bigint "host_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_gardens_on_user_id"
+    t.index ["host_id"], name: "index_gardens_on_host_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +52,6 @@ ActiveRecord::Schema.define(version: 2018_11_19_075933) do
   end
 
   add_foreign_key "bookings", "gardens"
-  add_foreign_key "bookings", "users"
-  add_foreign_key "gardens", "users"
+  add_foreign_key "bookings", "users", column: "guest_id"
+  add_foreign_key "gardens", "users", column: "host_id"
 end

@@ -6,7 +6,7 @@ class CreateGardens < ActiveRecord::Migration[5.2]
       t.integer :price
       t.string :photo
       t.string :location
-      t.references :user, foreign_key: true
+      t.references :host, foreign_key: {to_table: :users}
 
       t.timestamps
     end
