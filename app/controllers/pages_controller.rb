@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-  def index
-    render status: 200
+  def ping
+  end
+
+  def home
   end
 end
