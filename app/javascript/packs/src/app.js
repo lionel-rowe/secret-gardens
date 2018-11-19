@@ -1,4 +1,5 @@
 import React from 'react';
+import apiUrl from './getApiUrl.js';
 
 export default class App extends React.Component {
 
@@ -9,7 +10,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/v1/gardens.json')
+    fetch(`${apiUrl}/api/v1/gardens.json`)
     .then(res => res.json())
     .then(data => {
 
