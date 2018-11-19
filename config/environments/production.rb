@@ -95,4 +95,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.force_ssl = true
+
+  # PRODUCTON URL
+  config.action_mailer.default_url_options = { host: 'https://savage-garden.herokuapp.com', port: 443 }
 end
