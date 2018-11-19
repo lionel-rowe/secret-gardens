@@ -5,4 +5,11 @@ Rails.application.routes.draw do
   get 'ping' => 'pages#ping'
 
   root to: 'pages#home'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :gardens, only: [ :index ]
+    end
+  end
+
 end
