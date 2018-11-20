@@ -1,11 +1,17 @@
 import React from 'react';
 import apiUrl from './getApiUrl.js';
+import Card from './components/card';
 
 export default class App extends React.Component {
 
   state = {
     data: {
-      message: ''
+      gardens: [
+        {
+          name: 'Balcony',
+          price: 150,
+        }
+      ]
     }
   };
 
@@ -24,8 +30,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <p>{this.state.data.message} => React => 🌍</p>
+      <Card garden = {this.state.data.gardens[0]}/>
     );
   }
-
 };
