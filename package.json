@@ -1,5 +1,5 @@
 {
-  "name": "a-garden",
+  "name": "secret-gardens",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
