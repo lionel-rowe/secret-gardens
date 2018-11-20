@@ -18,7 +18,7 @@ class Api::V1::GardensController < Api::V1::BaseController
   end
 
   def create
-    @garden = current_user.gardens.new(garden_params)
+    @garden = Garden.new(garden_params)
     authorize @garden
     if @garden.save
       render :show, status: :created
@@ -41,7 +41,7 @@ class Api::V1::GardensController < Api::V1::BaseController
   end
 
   def garden_params
-    params.require(:garden).permit(:name, :description, :price, :photo, :location)
+    params.require(:garden).permit(:name, :description, :price, :photo, :location, :user_id)
   end
 
   def render_error
