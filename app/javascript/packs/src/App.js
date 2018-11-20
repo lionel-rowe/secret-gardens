@@ -78,6 +78,7 @@ export default class App extends React.Component {
               </nav>
               <Route path="/" exact component={SignInForm} />
               <Route path="/doges" exact component={Doges} />
+              <Route path="/users/sign_in" exact component={Doges} />
             </div>
           </div>
         </Router>

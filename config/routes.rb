@@ -7,12 +7,12 @@ Rails.application.routes.draw do
       resources :bookings, only: [:index, :show, :create]
     end
   end
- 
+
   get 'ping' => 'pages#ping'
 
   root to: 'pages#index'
   get '*path', to: 'pages#index'
 
-  devise_for :users
+  devise_for :users#, skip: :sessions
 
 end
