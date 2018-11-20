@@ -61,5 +61,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
 
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'material_kit'
+# gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+# gem 'material_kit'
+
+# gem 'material-ui', '~> 0.7.3.2'

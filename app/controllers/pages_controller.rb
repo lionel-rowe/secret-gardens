@@ -2,6 +2,6 @@ class PagesController < ApplicationController
   def ping
   end
 
-  def home
+  def index
   end
 end
