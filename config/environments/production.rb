@@ -97,5 +97,5 @@ Rails.application.configure do
   config.force_ssl = true
 
   # PRODUCTON URL
-  config.action_mailer.default_url_options = { host: 'https://savage-garden.herokuapp.com', port: 443 }
+  config.action_mailer.default_url_options = { host: 'https://secret-gardens.herokuapp.com', port: 443 }
 end
