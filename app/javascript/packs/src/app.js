@@ -1,6 +1,10 @@
 import React from 'react';
 import apiUrl from './getApiUrl.js';
 
+import SignInForm from './SignInForm.js';
+
+// ./app.js
+
 export default class App extends React.Component {
 
   state = {
@@ -24,7 +28,10 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <p>{this.state.data.message} => React => 🌍</p>
+      <div>
+        {/*<p>{this.state.data.message} => React => 🌍</p>*/}
+
+      </div>
     );
   }
 
