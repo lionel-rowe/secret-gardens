@@ -1,6 +1,29 @@
-@import "materialize/components/color-variables";
+// @import "materialize/components/color-variables";
 
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+// $primary-color: #4DBAC7 !default;
+// $secondary-color: #F6C523 !default;
 
-@import "materialize";
+// // @import 'colors';
+
+// // accent #F6C523
+// // main #4DBAC7
+
+
+// //
+
+body {
+  margin: 0;
+}
+
+// .primary {
+//   background: $primary-color;
+//   color: white;
+// }
+
+// .accent {
+//   background: $secondary-color;
+//   // .brand-logo {
+//   //   color: black;
+//   // }
+// }
+// //
