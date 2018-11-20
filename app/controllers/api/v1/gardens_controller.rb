@@ -1,8 +1,9 @@
 class Api::V1::GardensController < Api::V1::BaseController
+  skip_before_action :verify_authenticity_token
   before_action :set_garden, only: [ :show, :update, :destroy]
 
   def index
-    @gardens = Garden.all
+    @gardens = policy_scope(Garden)
   end
 
   def show
@@ -17,7 +18,8 @@ class Api::V1::GardensController < Api::V1::BaseController
   end
 
   def create
-    @garden = Garden.new(garden_params)
+    @garden = current_user.gardens.new(garden_params)
+    authorize @garden
     if @garden.save
       render :show, status: :created
     else
@@ -35,6 +37,7 @@ class Api::V1::GardensController < Api::V1::BaseController
 
   def set_garden
     @garden = Garden.find(params[:id])
+    authorize @garden
   end
 
   def garden_params
