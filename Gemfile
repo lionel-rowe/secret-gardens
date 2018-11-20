@@ -29,8 +29,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# ADDING DEVISE
+# ADDING DEVISE & pundit
 gem 'devise'
+gem 'pundit'
+
+# ADDING TOKEN AUTH
+gem 'simple_token_authentication', '~> 1.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
