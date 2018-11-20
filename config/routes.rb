@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :gardens
+      resources :gardens, only: [ :index, :show, :update, :create, :destroy ]
       resources :bookings, only: [:index, :show, :create]
     end
   end
