@@ -1,6 +1,8 @@
 class Api::V1::BaseController < ActionController::Base
-  acts_as_token_authentication_handler_for User,
-    if: ->(controller) { controller.user_token_authenticable? }
+  acts_as_token_authentication_handler_for User
+
+  # CONDITIONAL AUTHENTICATION
+  # if: ->(controller) { controller.user_token_authenticable? }
 
   include Pundit
   # Prevent CSRF attacks by raising an exception.    # Prevent CSRF attacks by raising an exception.
@@ -16,16 +18,17 @@ class Api::V1::BaseController < ActionController::Base
   rescue_from StandardError,                with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-  protected
+  # CONDITIONAL AUTHENTICATION
+  # protected
 
-  def user_token_authenticable?
-    # This ensure the token can be used only for JSON requests (you may want to enable it for XML too, for example)
-    return false unless request.format.json?
-    return false if tokenized_user_identifier.blank?
+  # def user_token_authenticable?
+  #   # This ensure the token can be used only for JSON requests (you may want to enable it for XML too, for example)
+  #   return false unless request.format.json?
+  #   return false if tokenized_user_identifier.blank?
 
-    # `nil` is still a falsy value, but I want a strictly boolean field here
-    tokenized_user.try(:token_authenticable?) || false
-  end
+  #   # `nil` is still a falsy value, but I want a strictly boolean field here
+  #   tokenized_user.try(:token_authenticable?) || false
+  # end
 
   private
 
@@ -47,13 +50,14 @@ class Api::V1::BaseController < ActionController::Base
     render json: response, status: :internal_server_error
   end
 
-  def tokenized_user
-    # I use email with devise, you can use whatever you want
-    User.find_by(email: tokenized_user_identifier.to_s)
-  end
+   # CONDITIONAL AUTHENTICATION
+  # def tokenized_user
+  #   # I use email with devise, you can use whatever you want
+  #   User.find_by(email: tokenized_user_identifier.to_s)
+  # end
 
-  def tokenized_user_identifier
-    # Customize this based on Simple Token Authentication settings
-    request.headers['X-User-Email'] || params[:user_email]
-  end
+  # def tokenized_user_identifier
+  #   # Customize this based on Simple Token Authentication settings
+  #   request.headers['X-User-Email'] || params[:user_email]
+  # end
 end
