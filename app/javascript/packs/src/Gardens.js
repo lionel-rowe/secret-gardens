@@ -13,7 +13,7 @@ export default class Gardens extends React.Component {
       <div>
         {this.props.data.gardens.map((garden, idx) => {
           return (
-            <Link to={`gardens/${garden.id}`} key={idx}>
+            <Link to={`gardens/${garden.id}`} key={idx} className='card-link'>
               <Card garden={garden}></Card>
             </Link>
           );

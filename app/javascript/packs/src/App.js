@@ -38,15 +38,13 @@ const theme = createMuiTheme({
 });
 
 export default class App extends React.Component {
-
-
   state = {
     data: {
       gardens: []
     }
   };
 
-  componentDidMount() {
+  refreshData = () => {
     fetch(`${apiUrl}/api/v1/gardens.json`)
     .then(res => res.json())
     .then(data => {
@@ -57,6 +55,10 @@ export default class App extends React.Component {
         data: data
       });
     });
+  }
+
+  componentDidMount() {
+    this.refreshData();
   }
 
   render() {
@@ -71,7 +73,7 @@ export default class App extends React.Component {
               <Route path="/users/sign_in" exact component={SignInForm} />
 
               <Switch>
-                <Route path="/gardens/new" exact component={New} />
+                <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
                 <Route
                   path='/gardens/:id'
                   render={(props) => {

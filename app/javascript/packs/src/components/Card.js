@@ -1,16 +1,3 @@
-// import React from 'react';
-
-// export default class Doges extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         {JSON.stringify(this.props.garden)}
-//       </div>
-//     );
-//   }
-// }
-
-
 import React from 'react';
 // import "./card.css";
 import {Image} from 'cloudinary-react';
