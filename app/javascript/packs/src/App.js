@@ -1,31 +1,34 @@
 import React from 'react';
-import apiUrl from './getApiUrl.js';
 
 import SignInForm from './SignInForm.js';
 import Navbar from './components/Navbar.js';
+import BottomNav from './components/BottomNav.js';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 
-import { Typography } from '@material-ui/core';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Gardens from './Gardens.js';
+import Garden from './Garden.js';
+import Doges from './Doges.js';
+import New from './New.js';
 
-import Doges from './Doges.js'
+import apiUrl from './getApiUrl.js';
 
-// import blue from '@material-ui/core/colors/blue';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#f7d04f',
-      main: '#F6C523',
-      dark: '#ac8918',
-      contrastText: '#000',
-    },
-    secondary: {
       light: '#70c7d2',
       main: '#4DBAC7',
       dark: '#35828b',
       contrastText: '#fff',
+    },
+    secondary: {
+      light: '#f7d04f',
+      main: '#F6C523',
+      dark: '#ac8918',
+      contrastText: '#000',
     },
   },
   typography: {
@@ -36,9 +39,10 @@ const theme = createMuiTheme({
 
 export default class App extends React.Component {
 
+
   state = {
     data: {
-      message: ''
+      gardens: []
     }
   };
 
@@ -60,26 +64,25 @@ export default class App extends React.Component {
       <MuiThemeProvider theme={theme}>
         <Router>
           <div>
-            <Navbar title='TITLE' />
-
-            <Typography variant="h3" gutterBottom>
-              hi
-            </Typography>
-            <div>
-              <nav>
-                <ul>
-                  <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/doges">Doges</Link>
-                  </li>
-                </ul>
-              </nav>
-              <Route path="/" exact component={SignInForm} />
+            <Navbar title='Gardens' />
+            <Grid container style={{ padding: '76px 20px' }} >
+              <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
               <Route path="/doges" exact component={Doges} />
-              <Route path="/users/sign_in" exact component={Doges} />
-            </div>
+              <Route path="/users/sign_in" exact component={SignInForm} />
+
+              <Switch>
+                <Route path="/gardens/new" exact component={New} />
+                <Route
+                  path='/gardens/:id'
+                  render={(props) => {
+                    return (
+                      <Garden {...props} garden={this.state.data.gardens.find(g => g.id === +props.match.params.id)} />
+                    );
+                  }}
+                />
+              </Switch>
+            </Grid>
+            <BottomNav />
           </div>
         </Router>
       </MuiThemeProvider>

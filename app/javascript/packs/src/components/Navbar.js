@@ -10,12 +10,12 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
-
-
 const styles = theme => ({
-  root: {
-    width: '100%',
-  },
+    root: {
+      position: "fixed",
+      top:"0",
+      width: "100%"
+    },
   grow: {
     flexGrow: 1,
   },
@@ -76,7 +76,7 @@ function Navbar(props) {
   const { classes } = props;
   return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" color="secondary">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />
