@@ -27,3 +27,10 @@ body {
 //   // }
 // }
 // //
+
+.card-link {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+@import 'card';

@@ -20,6 +20,7 @@ class Api::V1::GardensController < Api::V1::BaseController
   def create
     @garden = Garden.new(garden_params)
     authorize @garden
+    # debugger
     if @garden.save
       render :show, status: :created
     else

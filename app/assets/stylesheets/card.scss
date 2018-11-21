@@ -1,0 +1,17 @@
+.cards {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  text-decoration: none;
+  color: #373331;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  border: 1px solid #f9f9f9;
+  box-shadow: 1px 1px #bcbab8;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+.garden-card {
+  margin: 10px;
+}
