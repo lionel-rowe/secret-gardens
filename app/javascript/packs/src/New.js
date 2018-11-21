@@ -91,7 +91,8 @@ const MaterialUiForm = props => {
                     description: f.description.value,
                     location: f.location.value,
                     price: +f.price.value,
-                    user_id: 5
+                    user_id: 5,
+                    photo: 'Secret gardens/Kyoto-Gardens.jpg'
                   }
                 })
               }).then(res => res.json())

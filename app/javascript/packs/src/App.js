@@ -67,7 +67,8 @@ export default class App extends React.Component {
         <Router>
           <div>
             <Navbar title='Gardens' />
-            <Grid container style={{ padding: '76px 20px' }} >
+            {/*<Grid container style={{ padding: '76px 20px' }} >*/}
+            <Grid container style={{ padding: '76px 20px', display: 'flex', justifyContent: 'center'}} >
               <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
               <Route path="/doges" exact component={Doges} />
               <Route path="/users/sign_in" exact component={SignInForm} />
