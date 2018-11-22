@@ -1,11 +1,10 @@
 class Api::V1::BaseController < ActionController::Base
-  acts_as_token_authentication_handler_for User,
-    if: ->(controller) { controller.user_token_authenticable? }
+  # acts_as_token_authentication_handler_for User
+  # protect_from_forgery with: :null_session instead
 
   include Pundit
   # Prevent CSRF attacks by raising an exception.    # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.    # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
 
   # before_action :authenticate_user!
   # after_action :verify_authorized, :except => :index, unless: :devise_controller?
@@ -15,17 +14,6 @@ class Api::V1::BaseController < ActionController::Base
 
   rescue_from StandardError,                with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-
-  protected
-
-  def user_token_authenticable?
-    # This ensure the token can be used only for JSON requests (you may want to enable it for XML too, for example)
-    return false unless request.format.json?
-    return false if tokenized_user_identifier.blank?
-
-    # `nil` is still a falsy value, but I want a strictly boolean field here
-    tokenized_user.try(:token_authenticable?) || false
-  end
 
   private
 
@@ -45,15 +33,5 @@ class Api::V1::BaseController < ActionController::Base
       response = { error: "Internal Server Error" }
     end
     render json: response, status: :internal_server_error
-  end
-
-  def tokenized_user
-    # I use email with devise, you can use whatever you want
-    User.find_by(email: tokenized_user_identifier.to_s)
-  end
-
-  def tokenized_user_identifier
-    # Customize this based on Simple Token Authentication settings
-    request.headers['X-User-Email'] || params[:user_email]
   end
 end

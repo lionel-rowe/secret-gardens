@@ -1,5 +1,5 @@
 class Api::V1::GardensController < Api::V1::BaseController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   before_action :set_garden, only: [ :show, :update, :destroy]
 
   def index
