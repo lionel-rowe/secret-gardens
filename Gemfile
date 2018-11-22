@@ -33,6 +33,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'pundit'
 
+# HasSecretToken
+gem 'has_secure_token'
+
+
 # REMOVED TOKEN AUTH
 
 # Use ActiveStorage variant
