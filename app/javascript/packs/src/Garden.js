@@ -10,11 +10,6 @@ import GardenCard from './components/GardenCard.js';
 import cloudinarify from './utils/cloudinarify.js';
 import defaultImg from './utils/defaultImg.js';
 
-console.log(
-  document.querySelector('meta[name="csrf-param"]').content,
-  document.querySelector('meta[name="csrf-token"]').content
-);
-
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
@@ -25,10 +20,11 @@ const styles = theme => ({
 
 function Garden(props) {
   const { classes } = props;
-  const garden = props.garden;
-  const name = props.garden.name;
-  const photo = props.garden.photo;
-  const description = props.garden.description;
+
+  const garden = props.garden || { name: '', photo: {url: null}, description: '' };
+
+  const { name, photo, description } = garden;
+
   const bgImg = photo.url ? cloudinarify(photo.url) : defaultImg;
 
   return (

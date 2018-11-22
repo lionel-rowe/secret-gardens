@@ -2,10 +2,10 @@ import React from 'react';
 
 import Button from '@material-ui/core/Button';
 
-console.log(
-  document.querySelector('meta[name="csrf-param"]').content,
-  document.querySelector('meta[name="csrf-token"]').content
-);
+// console.log(
+//   document.querySelector('meta[name="csrf-param"]').content,
+//   document.querySelector('meta[name="csrf-token"]').content
+// );
 
 export default class App extends React.Component {
 

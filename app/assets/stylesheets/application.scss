@@ -33,6 +33,8 @@ body {
   color: inherit;
 }
 
-
+body {
+  overflow-y: scroll;
+}
 
 @import 'card';

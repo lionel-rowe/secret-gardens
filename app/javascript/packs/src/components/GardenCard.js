@@ -15,7 +15,6 @@ import { withStyles } from '@material-ui/core/styles';
 import defaultImg from '../utils/defaultImg.js';
 import cloudinarify from '../utils/cloudinarify.js';
 
-
 const styles = theme => ({
   card: {
     height: '100%',
