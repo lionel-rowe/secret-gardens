@@ -10,21 +10,34 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { withStyles } from '@material-ui/core/styles';
+import defaultImg from '../utils/defaultImg.js';
+import cloudinarify from '../utils/cloudinarify.js';
+
 
 const styles = theme => ({
   card: {
     height: '100%',
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
-    height: '150px',
+    // maxHeight: '150px',
+    height: '100%',
+    width: '100%',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   cardContent: {
     flexGrow: 1,
   },
+  link: {
+    height: '100%',
+    width: '100%',
+  }
 });
 
 class GardenCard extends React.Component {
@@ -36,11 +49,14 @@ class GardenCard extends React.Component {
     const description = this.props.garden.description;
     const { classes } = this.props;
 
+    const bgImg = photo ? cloudinarify(photo) : defaultImg;
+
     return (
+      <Link className={classes.cardMedia} to={`gardens/${garden.id}`} key={garden.id} className='unstyled-link' variant="contained" color="primary">
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
-            image={`https://res.cloudinary.com/drgdpdviq/image/upload/c_scale,h_150,r_10,w_250/v1/${photo}`}
+            image={bgImg}
             title={name}
           />
           <CardContent className={classes.cardContent}>
@@ -52,6 +68,7 @@ class GardenCard extends React.Component {
             </Typography>
           </CardContent>
         </Card>
+        </Link>
       );
 
 
@@ -68,6 +85,6 @@ class GardenCard extends React.Component {
   }
 }
 
-export default GardenCard;
+export default withStyles(styles)(GardenCard);
 
 

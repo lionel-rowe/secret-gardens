@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Gardens from './Gardens.js';
 import Garden from './Garden.js';
-import Doges from './Doges.js';
 import New from './New.js';
 import Page404 from './Page404.js';
 import Bookings from './Bookings.js';

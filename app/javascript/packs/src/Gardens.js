@@ -21,6 +21,10 @@ const styles = theme => ({
   cardGrid: {
     padding: `${theme.spacing.unit * 8}px 0`,
   },
+  gridItem: {
+    height: '100%',
+    width: '100%',
+  }
 });
 
 function Album(props) {
@@ -33,8 +37,8 @@ function Album(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           <Grid container spacing={40}>
             {props.data.gardens.map(garden => (
-              <Grid item key={garden.id} sm={6} md={4} lg={3}>
-              <GardenCard garden={garden} classes={classes} />
+              <Grid item key={garden.id} sm={6} md={4} lg={3} className={classes.gridItem}>
+              <GardenCard garden={garden} />
               </Grid>
             ))}
           </Grid>

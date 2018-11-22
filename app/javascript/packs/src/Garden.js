@@ -5,7 +5,10 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import NewBooking from './NewBooking.js';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import GardenCard from './components/GardenCard.js';
+import cloudinarify from './utils/cloudinarify.js';
+import defaultImg from './utils/defaultImg.js';
 
 console.log(
   document.querySelector('meta[name="csrf-param"]').content,
@@ -26,19 +29,28 @@ function Garden(props) {
   const name = props.garden.name;
   const photo = props.garden.photo;
   const description = props.garden.description;
+  const bgImg = photo ? cloudinarify(photo) : defaultImg;
 
   return (
     <div>
-      <Paper className={classes.root} elevation={1}>
+      <div style={{
+        backgroundImage: `url("${bgImg}")`,
+        width: '100vw',
+        height: 300,
+        marginTop: -20,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }} />
+      <div style={{textAlign: 'center'}}>
         <Typography variant="h5" component="h3">
           {name}
         </Typography>
         <Typography component="p">
           {description}
         </Typography>
-        <Link to={NewBooking}>
+        <Link to='/newbooking' className='unstyled-link'>
         <Button>Book Now</Button></Link>
-      </Paper>
+      </div>
     </div>
   );
 }
