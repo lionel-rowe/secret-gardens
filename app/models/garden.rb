@@ -1,4 +1,6 @@
 class Garden < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   belongs_to :host, class_name: 'User', foreign_key: 'user_id'
   has_many :bookings
 
