@@ -15,6 +15,8 @@ import apiUrl from './getApiUrl.js';
 
 import FileUploadButton from './components/FileUploadButton.js';
 
+import { withRouter } from 'react-router-dom';
+
 // name: "Gardens of Versailles", description: "meh", price: 300, photo: "...", location: "Paris", user_id: 3,
 
 // TODO: make a class component not functional component; insert state inside
@@ -32,10 +34,16 @@ const csrfParam = document.querySelector('meta[name="csrf-param"]').content;
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
 
-const MaterialUiForm = props => {
+// const Button = withRouter(({ history }) => (
+//   <button
+//     type='button'
+//     onClick={() => { history.push('/new-location') }}
+//   >
+//     Click Me!
+//   </button>
+// ));
 
-  const outerProps = props;
-
+const MaterialUiForm = withRouter(props => {
   const handleSubmit = (e) => {
       e.preventDefault();
 
@@ -49,25 +57,20 @@ const MaterialUiForm = props => {
       fetch(`${apiUrl}/api/v1/gardens`, {
         method: 'POST',
         headers: {
-          // "Content-Type": "application/json; charset=utf-8",
           // "Content-Type": "multipart/form-data"
         },
-        // body: JSON.stringify({
-        //   garden: {
-        //     name: f.name.value,
-        //     description: f.description.value,
-        //     location: f.location.value,
-        //     price: +f.price.value,
-        //     user_id: 5,
-        //     photo: 'Secret gardens/Kyoto-Gardens.jpg'
-        //   }
-        // })
-
         body: fData
-      }).then(res => res.text())
+      }).then(res => res.json())
       .then(dat => {
         console.log(dat);
-        props.refreshData();
+
+        if (dat.errors) {
+          alert(dat.errors.join('\n'))
+        } else {
+          props.refreshData();
+
+          props.history.push(`/gardens/${dat.id}`);
+        }
       });
 
     };
@@ -125,6 +128,6 @@ const MaterialUiForm = props => {
       </form>
     </Grid>
   );
-}
+});
 
 export default MaterialUiForm;
