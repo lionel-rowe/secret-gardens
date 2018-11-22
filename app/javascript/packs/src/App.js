@@ -15,6 +15,8 @@ import Garden from './Garden.js';
 import Doges from './Doges.js';
 import New from './New.js';
 import Page404 from './Page404.js';
+import Bookings from './Bookings.js';
+import NewBooking from './NewBooking.js';
 
 import apiUrl from './getApiUrl.js';
 
@@ -68,25 +70,26 @@ export default class App extends React.Component {
       <MuiThemeProvider theme={theme}>
         <Router>
           <div>
-            <Navbar title='Gardens' />
+            <Navbar title='Secret Gardens' />
             {/*<Grid container style={{ padding: '76px 20px' }} >*/}
-            <Grid container style={{ padding: '76px 20px', display: 'flex', justifyContent: 'center'}} >
+            <Grid container style={{ padding: '76px 10px', display: 'flex', justifyContent: 'center'}} >
               <Switch>
                 <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
-                <Route path="/doges" exact component={Doges} />
+                <Route path="/bookings" exact component={Bookings} />
+                <Route path="/users/sign_in" exact component={SignInForm} />
+                <Route path="/newbooking" exact component={NewBooking} />
                 <Route path="/login" exact component={SignInForm} />
                 <Route path="/signup" exact component={RegistrationForm} />
-
-                  <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
-                  <Route
-                    path='/gardens/:id'
-                    render={(props) => {
-                      return (
-                        <Garden {...props} garden={this.state.data.gardens.find(g => g.id === +props.match.params.id)} />
-                      );
-                    }}
-                  />
-                  <Route component={Page404} />
+                <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
+                <Route
+                  path='/gardens/:id'
+                  render={(props) => {
+                    return (
+                      <Garden {...props} garden={this.state.data.gardens.find(g => g.id === +props.match.params.id)} />
+                    );
+                  }}
+                />
+                <Route component={Page404} />
               </Switch>
             </Grid>
             <BottomNav />
