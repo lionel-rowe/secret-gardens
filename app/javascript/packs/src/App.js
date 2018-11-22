@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SignInForm from './SignInForm.js';
+import RegistrationForm from './RegistrationForm.js';
 import Navbar from './components/Navbar.js';
 import BottomNav from './components/BottomNav.js';
 
@@ -13,6 +14,7 @@ import Gardens from './Gardens.js';
 import Garden from './Garden.js';
 import Doges from './Doges.js';
 import New from './New.js';
+import Page404 from './Page404.js';
 import Bookings from './Bookings.js';
 import NewBooking from './NewBooking.js';
 
@@ -71,11 +73,13 @@ export default class App extends React.Component {
             <Navbar title='Secret Gardens' />
             {/*<Grid container style={{ padding: '76px 20px' }} >*/}
             <Grid container style={{ padding: '76px 10px', display: 'flex', justifyContent: 'center'}} >
-              <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
-              <Route path="/bookings" exact component={Bookings} />
-              <Route path="/users/sign_in" exact component={SignInForm} />
-              <Route path="/newbooking" exact component={NewBooking} />
               <Switch>
+                <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
+                <Route path="/bookings" exact component={Bookings} />
+                <Route path="/users/sign_in" exact component={SignInForm} />
+                <Route path="/newbooking" exact component={NewBooking} />
+                <Route path="/login" exact component={SignInForm} />
+                <Route path="/signup" exact component={RegistrationForm} />
                 <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
                 <Route
                   path='/gardens/:id'
@@ -85,6 +89,7 @@ export default class App extends React.Component {
                     );
                   }}
                 />
+                <Route component={Page404} />
               </Switch>
             </Grid>
             <BottomNav />
