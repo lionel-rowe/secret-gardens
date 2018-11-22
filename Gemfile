@@ -36,6 +36,12 @@ gem 'pundit'
 # ADDING TOKEN AUTH
 gem 'simple_token_authentication', '~> 1.0'
 
+#ADDING GEMS FOR PHOTO UPLOAD
+gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'cloudinary'
+gem 'carrierwave'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -63,7 +69,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 # gem 'material_kit'
