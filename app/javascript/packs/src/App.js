@@ -13,6 +13,8 @@ import Gardens from './Gardens.js';
 import Garden from './Garden.js';
 import Doges from './Doges.js';
 import New from './New.js';
+import Bookings from './Bookings.js';
+import NewBooking from './NewBooking.js';
 
 import apiUrl from './getApiUrl.js';
 
@@ -66,13 +68,13 @@ export default class App extends React.Component {
       <MuiThemeProvider theme={theme}>
         <Router>
           <div>
-            <Navbar title='Gardens' />
+            <Navbar title='Secret Gardens' />
             {/*<Grid container style={{ padding: '76px 20px' }} >*/}
-            <Grid container style={{ padding: '76px 20px', display: 'flex', justifyContent: 'center'}} >
+            <Grid container style={{ padding: '76px 10px', display: 'flex', justifyContent: 'center'}} >
               <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
-              <Route path="/doges" exact component={Doges} />
+              <Route path="/bookings" exact component={Bookings} />
               <Route path="/users/sign_in" exact component={SignInForm} />
-
+              <Route path="/newbooking" exact component={NewBooking} />
               <Switch>
                 <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
                 <Route

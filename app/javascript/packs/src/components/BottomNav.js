@@ -39,7 +39,7 @@ class SimpleBottomNavigation extends React.Component {
       >
         <BottomNavigationAction component={Link} to="/" label="Home" icon={<HomeIcon />} />
         <BottomNavigationAction component={Link} to="/gardens/new" label="Create" icon={<AddCircleIcon />} />
-        <BottomNavigationAction component={Link} to="/doges" label="Doges" icon='🐶' />
+        <BottomNavigationAction component={Link} to="/bookings" label="My Bookings" icon='🐶' />
       </BottomNavigation>
     );
   }
