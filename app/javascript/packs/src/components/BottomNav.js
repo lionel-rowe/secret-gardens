@@ -6,8 +6,9 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import DateRangeIcon from '@material-ui/icons/DateRange';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const styles = {
   root: {
@@ -39,7 +40,7 @@ class SimpleBottomNavigation extends React.Component {
       >
         <BottomNavigationAction component={Link} to="/" label="Home" icon={<HomeIcon />} />
         <BottomNavigationAction component={Link} to="/gardens/new" label="Create" icon={<AddCircleIcon />} />
-        <BottomNavigationAction component={Link} to="/bookings" label="My Bookings" icon='🐶' />
+        <BottomNavigationAction component={Link} to="/bookings" label="My Bookings" icon={<DateRangeIcon />} />
       </BottomNavigation>
     );
   }
