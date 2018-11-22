@@ -69,3 +69,9 @@ gem 'dotenv-rails'
 # gem 'material_kit'
 
 # gem 'material-ui', '~> 0.7.3.2'
+
+gem 'cloudinary', '1.9.0'
+
+gem 'carrierwave', '~> 1.2'
+
+gem 'rest-client', '>= 2'

@@ -49,7 +49,7 @@ class GardenCard extends React.Component {
     const description = this.props.garden.description;
     const { classes } = this.props;
 
-    const bgImg = photo ? cloudinarify(photo) : defaultImg;
+    const bgImg = photo.url ? cloudinarify(photo.url) : defaultImg;
 
     return (
       <Link className={classes.cardMedia} to={`gardens/${garden.id}`} key={garden.id} className='unstyled-link' variant="contained" color="primary">

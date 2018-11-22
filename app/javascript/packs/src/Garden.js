@@ -29,7 +29,7 @@ function Garden(props) {
   const name = props.garden.name;
   const photo = props.garden.photo;
   const description = props.garden.description;
-  const bgImg = photo ? cloudinarify(photo) : defaultImg;
+  const bgImg = photo.url ? cloudinarify(photo.url) : defaultImg;
 
   return (
     <div>
