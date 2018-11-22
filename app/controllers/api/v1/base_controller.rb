@@ -1,8 +1,11 @@
 class Api::V1::BaseController < ActionController::Base
   # acts_as_token_authentication_handler_for User
-  # protect_from_forgery with: :null_session instead
+  before_action :check_token, except: [:login, :signup]
 
-  include Pundit
+  protect_from_forgery with: :null_session
+  # skip_before_action :verify_authenticity_token
+
+  # include Pundit
   # Prevent CSRF attacks by raising an exception.    # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.    # For APIs, you may want to use :null_session instead.
 
@@ -14,13 +17,19 @@ class Api::V1::BaseController < ActionController::Base
 
   rescue_from StandardError,                with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  def check_token
+    @user = User.find_by(token: params[:token])
+    if @user.nil?
+      render json: {error:"wrong token"}
+    end
 
+  end
   private
 
-  def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(root_path)
-  end
+  # def user_not_authorized
+  #   flash[:alert] = "You are not authorized to perform this action."
+  #   redirect_to(root_path)
+  # end
 
   def not_found(exception)
     render json: { error: exception.message }, status: :not_found

@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+
+end
+  # before_action :authenticate_user!
   # include Pundit
   # # Prevent CSRF attacks by raising an exception.    # Prevent CSRF attacks by raising an exception.
   # # For APIs, you may want to use :null_session instead.    # For APIs, you may want to use :null_session instead.
@@ -48,4 +50,4 @@ class ApplicationController < ActionController::Base
   # When defined, aliases are used to define both the params and the header names to watch.
   # E.g. facilitator_token, X-Facilitator-Token
 
-end
+
