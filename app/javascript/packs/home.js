@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import PropTypes from 'prop-types';
 import App from './src/App.js';
+// import apiUrl from './src/getApiUrl.js';
 
 const Hello = props => (
   <div>Hello {props.name}!</div>
@@ -21,7 +22,9 @@ const Hello = props => (
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App />,
+    <App  />,
     document.querySelector('#app'),
   );
 });
+
+

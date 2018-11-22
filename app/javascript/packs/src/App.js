@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SignInForm from './SignInForm.js';
+import RegistrationForm from './RegistrationForm.js';
 import Navbar from './components/Navbar.js';
 import BottomNav from './components/BottomNav.js';
 
@@ -13,6 +14,7 @@ import Gardens from './Gardens.js';
 import Garden from './Garden.js';
 import Doges from './Doges.js';
 import New from './New.js';
+import Page404 from './Page404.js';
 
 import apiUrl from './getApiUrl.js';
 
@@ -69,20 +71,22 @@ export default class App extends React.Component {
             <Navbar title='Gardens' />
             {/*<Grid container style={{ padding: '76px 20px' }} >*/}
             <Grid container style={{ padding: '76px 20px', display: 'flex', justifyContent: 'center'}} >
-              <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
-              <Route path="/doges" exact component={Doges} />
-              <Route path="/users/sign_in" exact component={SignInForm} />
-
               <Switch>
-                <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
-                <Route
-                  path='/gardens/:id'
-                  render={(props) => {
-                    return (
-                      <Garden {...props} garden={this.state.data.gardens.find(g => g.id === +props.match.params.id)} />
-                    );
-                  }}
-                />
+                <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
+                <Route path="/doges" exact component={Doges} />
+                <Route path="/login" exact component={SignInForm} />
+                <Route path="/signup" exact component={RegistrationForm} />
+
+                  <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
+                  <Route
+                    path='/gardens/:id'
+                    render={(props) => {
+                      return (
+                        <Garden {...props} garden={this.state.data.gardens.find(g => g.id === +props.match.params.id)} />
+                      );
+                    }}
+                  />
+                  <Route component={Page404} />
               </Switch>
             </Grid>
             <BottomNav />
