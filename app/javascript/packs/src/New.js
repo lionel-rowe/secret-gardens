@@ -13,6 +13,8 @@ import { Grid } from '@material-ui/core';
 
 import apiUrl from './getApiUrl.js';
 
+import FileUploadButton from './components/FileUploadButton.js';
+
 // name: "Gardens of Versailles", description: "meh", price: 300, photo: "...", location: "Paris", user_id: 3,
 
 // TODO: make a class component not functional component; insert state inside
@@ -109,12 +111,7 @@ const MaterialUiForm = props => {
         <div>
           <FormLabel>Upload a photo</FormLabel>
           {' '}
-
-            <Button
-              variant="contained" color="secondary"
-            > <input type='file' name='garden[photo]' />
-              Upload
-            </Button>
+          <FileUploadButton name='garden[photo]' id='garden_photo' />
         </div>
 
         <div style={{padding: '30px 0', display: 'flex', justifyContent: 'space-between'}}>

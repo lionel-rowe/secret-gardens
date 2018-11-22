@@ -10,11 +10,6 @@ import GardenCard from './components/GardenCard.js';
 import cloudinarify from './utils/cloudinarify.js';
 import defaultImg from './utils/defaultImg.js';
 
-console.log(
-  document.querySelector('meta[name="csrf-param"]').content,
-  document.querySelector('meta[name="csrf-token"]').content
-);
-
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
