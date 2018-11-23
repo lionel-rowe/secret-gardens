@@ -13,19 +13,6 @@ import { Grid } from '@material-ui/core';
 
 import apiUrl from './getApiUrl.js';
 
-// name: "Gardens of Versailles", description: "meh", price: 300, photo: "...", location: "Paris", user_id: 3,
-
-// TODO: make a class component not functional component; insert state inside
-// TODO: un-hard-code photo && user ID
-
-// const fakeState = {
-//   name: '',
-//   description: '',
-//   location: '',
-//   price: '',
-//   user_id: 5
-// };
-
 const csrfParam = document.querySelector('meta[name="csrf-param"]').content;
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
@@ -83,8 +70,8 @@ const SignInForm = withRouter(props => {
                 } else {
 
                   localStorage.setItem('token', dat.token); //TODO: don't use localstorage
-                  localStorage.setItem('email', f.email.token); //TODO: don't use localstorage
-                  localStorage.setItem('username', dat.token); //TODO: don't use localstorage
+                  localStorage.setItem('email', dat.email); //TODO: don't use localstorage
+                  localStorage.setItem('uid', dat.uid); //TODO: don't use localstorage
                   // props.refreshData();
 
                   // history.push(`/gardens/${dat.id}`);

@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import HamburgerIcon from '@material-ui/icons/Menu';
+// import HamburgerIcon from '@material-ui/icons/Menu';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 
 import { withRouter } from 'react-router-dom';
@@ -79,8 +79,16 @@ function Navbar(props) {
       <div className={classes.root}>
         <AppBar position="static" color="secondary">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-              <HamburgerIcon />
+            <IconButton style={{marginLeft: -5}} className={classes.menuButton} color="inherit" aria-label="Open drawer">
+              {/*<HamburgerIcon />*/}
+              <div style={{
+                backgroundImage: 'url("https://res.cloudinary.com/drgdpdviq/image/upload/v1542959746/Secret%20gardens/lotus.png")',
+                width: 30,
+                height: 30,
+                backgroundPosition: 'center',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat'
+              }} />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               {props.title}

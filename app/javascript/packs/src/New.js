@@ -40,7 +40,7 @@ const MaterialUiForm = withRouter(props => {
       const f = document.querySelector('#newGardenForm');
 
       const fData = new FormData(f);
-      fData.set('garden[user_id]', 5); //TODO: un-hardcode
+      fData.set('garden[user_id]', +localStorage.uid); //TODO: un-hardcode
 
       console.log(fData);
 
