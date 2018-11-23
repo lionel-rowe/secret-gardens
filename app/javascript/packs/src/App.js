@@ -88,6 +88,7 @@ export default class App extends React.Component {
                 }} />
                 <Route path="/bookings" exact component={Bookings} />
                 <Route path="/newbooking" exact component={NewBooking} />
+                {/*<Route path="/test" exact component={Test} />*/}
                 {/*<Route path="/login" exact component={SignInForm} />*/}
                 {/*<Route path="/signup" exact component={RegistrationForm} />*/}
                 <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />

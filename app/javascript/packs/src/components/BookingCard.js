@@ -52,6 +52,7 @@ class BookingCard extends React.Component {
   }
 }
 
+export default BookingCard;
 
 
     // return (
@@ -64,6 +65,5 @@ class BookingCard extends React.Component {
     //   </div>
     //   );
 
-export default BookingCard;
 
 
