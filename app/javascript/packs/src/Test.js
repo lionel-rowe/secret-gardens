@@ -2,12 +2,9 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
-import Typography from '@material-ui/core/Typography';
 
 
-export default class NewBooking extends React.Component {
+export default class Example extends React.Component {
   static defaultProps = {
     numberOfMonths: 2,
   };
@@ -34,8 +31,8 @@ export default class NewBooking extends React.Component {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (
-      <div className="RangeExample" style={{textAlign: 'center'}}>
-        <Typography gutterBottom variant="h5" component="h3">
+      <div className="RangeExample">
+        <p>
           {!from && !to && 'Please select the first day.'}
           {from && !to && 'Please select the last day.'}
           {from &&
@@ -48,7 +45,7 @@ export default class NewBooking extends React.Component {
                 Reset
               </button>
             )}
-        </Typography>
+        </p>
         <DayPicker
           className="Selectable"
           numberOfMonths={this.props.numberOfMonths}
@@ -56,7 +53,6 @@ export default class NewBooking extends React.Component {
           modifiers={modifiers}
           onDayClick={this.handleDayClick}
         />
-
         <Helmet>
           <style>{`
   .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
@@ -76,53 +72,7 @@ export default class NewBooking extends React.Component {
   }
 `}</style>
         </Helmet>
-        <div>
-         {/*<Link to='/bookings' className='unstyled-link'>*/}
-          <Button style={{marginTop: '10px', display: 'flex', justifyContent: 'space-around', width: '100%', height: '3.5em', textAlign: 'center'}} className='unstyled-link' variant="contained" color="primary">SEND REQUEST</Button>
-           {/*</Link>*/}
-       </div>
       </div>
     );
   }
 }
-
-
-// import React from 'react';
-// import Calendar from 'react-calendar';
-// import Button from '@material-ui/core/Button';
-// import { Link } from "react-router-dom";
-// import Typography from '@material-ui/core/Typography';
-
-// class NewBooking extends React.Component {
-//   state = {
-//     date: new Date(),
-//   }
-
-//   onChange = date => this.setState({ date })
-
-//   render() {
-//     const { selectRange } = this.state;
-
-//     return (
-//       <div>
-//       <div style={{textAlign: 'center'}}>
-//       <Typography gutterBottom variant="h5" component="h2">
-//               When would you like to book?
-//             </Typography></div>
-//         <div>
-//           <Calendar
-//             onChange={this.onChange}
-//             value={this.state.date}
-//           />
-//         </div>
-//         {/*<Link to='/newbooking' className='unstyled-link'>*/}
-//           <Button
-//           style={{marginTop: '10px', display: 'flex', justifyContent: 'space-around', width:
-//             '100%', height: '3.5em', textAlign: 'center'}} className='unstyled-link' variant="contained" color="primary">SEND REQUEST</Button>
-//         {/*</Link>*/}
-//       </div>
-//     );
-//   }
-// }
-
-// export default NewBooking;
