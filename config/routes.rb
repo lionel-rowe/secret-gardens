@@ -3,8 +3,16 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :gardens, only: [ :index, :show, :update, :create, :destroy ]
-      resources :bookings, only: [:index, :show, :create]
+      post '/login', to: 'users#login'
+      post '/signup', to: 'users#signup'
+
+      resources :gardens, only: [ :index, :show, :update, :create, :destroy ] do
+        resources :bookings, only: [:create]
+      end
+      resources :users, only: [ ] do
+        resources :bookings, only: [:index, :show]
+        resources :gardens, only: [ :index]
+      end
     end
   end
 
@@ -13,6 +21,6 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   get '*path', to: 'pages#index'
 
-  devise_for :users#, skip: :sessions
+  # devise_for :users#, skip: :sessions
 
 end

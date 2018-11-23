@@ -58,6 +58,7 @@ const MaterialUiForm = withRouter(props => {
         method: 'POST',
         headers: {
           // "Content-Type": "multipart/form-data"
+          token: localStorage.token
         },
         body: fData
       }).then(res => res.json())

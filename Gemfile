@@ -33,8 +33,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'pundit'
 
-# ADDING TOKEN AUTH
-gem 'simple_token_authentication', '~> 1.0'
+# HasSecretToken
+gem 'has_secure_token'
+
+
+# REMOVED TOKEN AUTH
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
