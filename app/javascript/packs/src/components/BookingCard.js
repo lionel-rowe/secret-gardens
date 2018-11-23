@@ -33,13 +33,8 @@ class BookingCard extends React.Component {
     const booking = this.props.booking;
 
     return (
-        <Card className={classes.card}>
-          <CardMedia
-            className={classes.cardMedia}
-            image="random"
-            title="random"
-          />
-          <CardContent className={classes.cardContent}>
+        <Card>
+          <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {user}: {use}
             </Typography>
@@ -52,6 +47,7 @@ class BookingCard extends React.Component {
   }
 }
 
+export default BookingCard;
 
 
     // return (
@@ -64,6 +60,5 @@ class BookingCard extends React.Component {
     //   </div>
     //   );
 
-export default BookingCard;
 
 
