@@ -24,7 +24,7 @@ Garden.create!({
     In 1979, the gardens along with the château were inscribed on the UNESCO World Heritage List, one of thirty-one such designations in France.', 
     price: '10000', 
     location: 'Paris', 
-    photo: 'Secret gardens/versailles.jpg', 
+    photo: 'https://res.cloudinary.com/drgdpdviq/image/upload/v1542941290/Secret gardens/versailles.jpg', 
     host: User.first 
 })
 Garden.create!({ 
@@ -36,7 +36,7 @@ Garden.create!({
     The organisation had 2,124,138 public visitors in the year 2016/17. Its 326-acre (132 ha) site at Kew has 40 historically important buildings; it became a UNESCO World Heritage Site on 3 July 2003. The collections at Kew and Wakehurst Place include over 28,000 taxa of living plants, 8.3 million plant and fungal herbarium specimens, and 30,000 species in the seed bank.', 
     price: '6000', 
     location: 'London', 
-    photo: 'Secret gardens/kewgardens.jpg', 
+    photo: 'https://res.cloudinary.com/drgdpdviq/image/upload/v1542941265/Secret%20gardens/kewgardens.jpg', 
     host: User.first 
 })
 Garden.create!({ 
@@ -52,7 +52,7 @@ Garden.create!({
     description: 'Here, all five of the senses are needed to fully experience and learn all this garden has to offer. It is a world of discovery and excitement, also providing great habitat for pollinators including bees and butterflies. Every feature is designed to tantalized guests to touch, see, hear and smell creating memorable experiences which will linger long after their visit to the garden to over.', 
     price: '600', 
     location: 'Oxford', 
-    photo: 'Secret gardens/th-4.jpg', 
+    photo: 'https://res.cloudinary.com/drgdpdviq/image/upload/v1542702099/Secret%20gardens/th-8.jpg', 
     host: User.last 
 })
 Garden.create!({ 
@@ -60,7 +60,7 @@ Garden.create!({
     description: 'Stories are told in the Conversation Garden in both the memorial pavers along the path and in the quiet conversations which occur regularly in this lovely sun-filled spot.    The picturesque views of the Annual Garden and the English Cottage Garden across the pond create a contemplative moment to connect through conversation, thought or the written word.', 
     price: '300', 
     location: 'Shanghai', 
-    photo: 'Secret gardens/th-5.jpg', 
+    photo: 'https://res.cloudinary.com/drgdpdviq/image/upload/v1542702100/Secret%20gardens/French-Country-Garden-Design-2.jpg', 
     host: User.first 
 })
 Garden.create!({ 
@@ -68,7 +68,7 @@ Garden.create!({
     description: 'Stories are told in the Conversation Garden in both the memorial pavers along the path and in the quiet conversations which occur regularly in this lovely sun-filled spot.    The picturesque views of the Annual Garden and the English Cottage Garden across the pond create a contemplative moment to connect through conversation, thought or the written word.', 
     price: '500', 
     location: 'Kyoto', 
-    photo: 'Secret gardens/th-9.jpg', 
+    photo: 'https://res.cloudinary.com/drgdpdviq/image/upload/v1542702103/Secret%20gardens/th.jpg', 
     host: User.last 
 })
 

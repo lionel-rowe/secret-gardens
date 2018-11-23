@@ -5,7 +5,7 @@ class Api::V1::UsersController < Api::V1::BaseController
             render json: {"msg":"success"}
             # render json: {token: @user.token}
         else
-            render json: {error: "signup failed"}
+            render json: {error: "We have been unable to process your request, please try again."}
         end
 
     end
@@ -13,12 +13,12 @@ class Api::V1::UsersController < Api::V1::BaseController
     def login
         @user = User.find_by(email: params[:email])
         if @user.nil?
-            render json: {error: "login failed"}
+            render json: {error: "Login failed, please try again!"}
         else
             if @user.valid_password?(params[:password])
                 render json: {token: @user.token}
             else
-                render json: {error: "login failed"}
+                render json: {error: "Login failed, please try again!"}
             end
         end
     end

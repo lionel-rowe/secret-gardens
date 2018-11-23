@@ -20,7 +20,7 @@ class Api::V1::BaseController < ActionController::Base
   def check_token
     @user = User.find_by(token: request.headers['token'])
     if @user.nil?
-      render json: {error:"wrong token"}
+      render json: {error:"Unable to login, Please try again!"}
     end
 
   end
