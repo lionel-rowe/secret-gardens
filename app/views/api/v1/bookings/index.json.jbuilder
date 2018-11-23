@@ -1,7 +1,3 @@
-json.bookings do
-  json.array! @bookings do |booking|
-    json.extract! booking, :id, :start, :end, :use
-  end
-end
+json.extract! @bookings, :id, :start, :end, :use
 
-json.message 'API'
+# json.message 'API'

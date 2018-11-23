@@ -47,6 +47,7 @@ class GardenCard extends React.Component {
     const photo = this.props.garden.photo;
     const description = this.props.garden.description;
     const { classes } = this.props;
+    const limitText = description.length > 70 ? description.slice(0, 70) + "..." : description;
 
     const bgImg = photo.url ? cloudinarify(photo.url) : defaultImg;
 
@@ -63,7 +64,7 @@ class GardenCard extends React.Component {
               {name}
             </Typography>
             <Typography>
-              {description}
+              {limitText}
             </Typography>
           </CardContent>
         </Card>
