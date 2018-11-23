@@ -69,42 +69,47 @@ export default class App extends React.Component {
     this.refreshData();
   }
 
+
+// {
+//                   if (localStorage.token) {
+//                     return
+//  else {
+//                     //TODO: return Registration form sometimes
+//                     return <SignInForm refreshData={this.refreshData} />;
+//                   }
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Router>
-          <div>
-            <Navbar title='Secret Gardens' />
-            {/*<Grid container style={{ padding: '76px 20px' }} >*/}
-            <Grid container style={{ padding: '76px 10px', display: 'flex', justifyContent: 'center'}} >
-              <Switch>
-                <Route path="/" exact component={() => {
-                  if (localStorage.token) {
-                    return <Gardens data={this.state.data} />;
-                  } else {
-                    //TODO: return Registration form sometimes
-                    return <SignInForm />;
-                  }
-                }} />
-                <Route path="/bookings" exact component={Bookings} />
-                <Route path="/newbooking" exact component={NewBooking} />
-                {/*<Route path="/login" exact component={SignInForm} />*/}
-                {/*<Route path="/signup" exact component={RegistrationForm} />*/}
-                <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
-                <Route
-                  path='/gardens/:id'
-                  render={(props) => {
-                    return (
-                      <Garden {...props} garden={this.state.data.gardens.find(g => g.id === +props.match.params.id)} />
-                    );
-                  }}
-                />
-                <Route component={Page404} />
-              </Switch>
-            </Grid>
-            <BottomNav />
-          </div>
-        </Router>
+        {!localStorage.token
+          ? (<Router><SignInForm refreshData={this.refreshData} /></Router>)
+          : (<Router>
+              <div>
+                <Navbar title='Secret Gardens' refreshData={this.refreshData} />
+                {/*<Grid container style={{ padding: '76px 20px' }} >*/}
+                <Grid container style={{ padding: '76px 10px', display: 'flex', justifyContent: 'center'}} >
+                  <Switch>
+                    <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
+                    <Route path="/bookings" exact component={Bookings} />
+                    <Route path="/newbooking" exact component={NewBooking} />
+                    {/*<Route path="/login" exact component={SignInForm} />*/}
+                    {/*<Route path="/signup" exact component={RegistrationForm} />*/}
+                    <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
+                    <Route
+                      path='/gardens/:id'
+                      render={(props) => {
+                        return (
+                          <Garden {...props} garden={this.state.data.gardens.find(g => g.id === +props.match.params.id)} />
+                        );
+                      }}
+                    />
+                    <Route component={Page404} />
+                  </Switch>
+                </Grid>
+                <BottomNav />
+              </div>
+            </Router>
+          )}
       </MuiThemeProvider>
     );
   }
