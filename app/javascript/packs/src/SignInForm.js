@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FormLabel from '@material-ui/core/FormLabel';
 
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import Checkbox from '@material-ui/core/Checkbox';
 
@@ -13,28 +13,15 @@ import { Grid } from '@material-ui/core';
 
 import apiUrl from './getApiUrl.js';
 
-// name: "Gardens of Versailles", description: "meh", price: 300, photo: "...", location: "Paris", user_id: 3,
-
-// TODO: make a class component not functional component; insert state inside
-// TODO: un-hard-code photo && user ID
-
-// const fakeState = {
-//   name: '',
-//   description: '',
-//   location: '',
-//   price: '',
-//   user_id: 5
-// };
-
 const csrfParam = document.querySelector('meta[name="csrf-param"]').content;
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
-const SignInForm = props => {
+const SignInForm = withRouter(props => {
+
+  // props.history.push('/');
 
   const handleSubmit = () => {};
   const reset = () => {};
-
-  const outerProps = props;
 
   return (
     <Grid>
@@ -61,29 +48,12 @@ const SignInForm = props => {
         </div>
         <div style={{padding: '30px 0', display: 'flex', justifyContent: 'space-between'}}>
           <Button style={{width:
-            '100%', height: '3.5em'}} variant="contained" color="primary" type='submit'
+            '100%', height: '3.5em'}} variant="contained" color="secondary" type='submit'
             onClick={(e) => {
               e.preventDefault();
 
               const f = document.querySelector('#sign-in-form');
               const fData = new FormData(f);
-
-              // fetch(`${apiUrl}/api/v1/login`, {
-              //   method: 'POST',
-              //   headers: {
-              //       "Content-Type": "application/json; charset=utf-8",
-              //   },
-              //   body: JSON.stringify({
-              //     user: {
-              //       email: f.email.value,
-              //       password: f.password.value,
-              //     }
-              //   })
-              // }).then(res => res.json())
-              // .then(dat => {
-              //   console.log(dat);
-              //   // outerProps.refreshData();
-              // });
 
               fetch(`${apiUrl}/api/v1/login`, {
                 method: 'POST',
@@ -100,10 +70,15 @@ const SignInForm = props => {
                 } else {
 
                   localStorage.setItem('token', dat.token); //TODO: don't use localstorage
-
+                  localStorage.setItem('email', dat.email); //TODO: don't use localstorage
+                  localStorage.setItem('uid', dat.uid); //TODO: don't use localstorage
                   // props.refreshData();
 
                   // history.push(`/gardens/${dat.id}`);
+                  props.refreshData(); //will also redir to index
+                  // setTimeout(() => {
+                  // props.history.push('/');
+                  // }, 1000);
                 }
               });
 
@@ -115,6 +90,6 @@ const SignInForm = props => {
       </form>
     </Grid>
   );
-}
+});
 
 export default SignInForm;

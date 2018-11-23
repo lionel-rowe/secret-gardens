@@ -5,12 +5,14 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/login', to: 'users#login'
       post '/signup', to: 'users#signup'
+      get '/my_bookings', to: 'bookings#my'
+      get '/received_bookings', to: 'bookings#received'
 
       resources :gardens, only: [ :index, :show, :update, :create, :destroy ] do
         resources :bookings, only: [:create]
       end
       resources :users, only: [ ] do
-        resources :bookings, only: [:index, :show]
+        resources :bookings, only: [:index, :show, :my, :received]
         resources :gardens, only: [ :index]
       end
     end

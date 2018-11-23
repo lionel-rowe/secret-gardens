@@ -33,16 +33,6 @@ import { withRouter } from 'react-router-dom';
 const csrfParam = document.querySelector('meta[name="csrf-param"]').content;
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
-
-// const Button = withRouter(({ history }) => (
-//   <button
-//     type='button'
-//     onClick={() => { history.push('/new-location') }}
-//   >
-//     Click Me!
-//   </button>
-// ));
-
 const MaterialUiForm = withRouter(props => {
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -50,7 +40,7 @@ const MaterialUiForm = withRouter(props => {
       const f = document.querySelector('#newGardenForm');
 
       const fData = new FormData(f);
-      fData.set('garden[user_id]', 5); //TODO: un-hardcode
+      fData.set('garden[user_id]', +localStorage.uid); //TODO: un-hardcode
 
       console.log(fData);
 

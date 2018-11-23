@@ -17,6 +17,14 @@ before_action :set_booking, only: [:show]
     end
   end
 
+  def my
+    @bookings = @user.bookings
+  end
+
+  def received
+    @bookings = Booking.joins('INNER JOIN gardens ON bookings.garden_id=gardens.id').where('gardens.user_id=?', @user.id)
+  end
+
   private
 
   def set_booking
