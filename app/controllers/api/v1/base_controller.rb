@@ -18,7 +18,7 @@ class Api::V1::BaseController < ActionController::Base
   rescue_from StandardError,                with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   def check_token
-    @user = User.find_by(token: params[:token])
+    @user = User.find_by(token: request.headers['token'])
     if @user.nil?
       render json: {error:"wrong token"}
     end

@@ -48,7 +48,12 @@ export default class App extends React.Component {
   };
 
   refreshData = () => {
-    fetch(`${apiUrl}/api/v1/gardens.json`)
+    fetch(`${apiUrl}/api/v1/gardens.json`, {
+      method: 'GET',
+      headers: {
+        // "Content-Type": "multipart/form-data"
+        token: localStorage.token
+    }})
     .then(res => res.json())
     .then(data => {
 
@@ -73,12 +78,18 @@ export default class App extends React.Component {
             {/*<Grid container style={{ padding: '76px 20px' }} >*/}
             <Grid container style={{ padding: '76px 10px', display: 'flex', justifyContent: 'center'}} >
               <Switch>
-                <Route path="/" exact component={() => <Gardens data={this.state.data} />} />
+                <Route path="/" exact component={() => {
+                  if (localStorage.token) {
+                    return <Gardens data={this.state.data} />;
+                  } else {
+                    //TODO: return Registration form sometimes
+                    return <SignInForm />;
+                  }
+                }} />
                 <Route path="/bookings" exact component={Bookings} />
-                <Route path="/users/sign_in" exact component={SignInForm} />
                 <Route path="/newbooking" exact component={NewBooking} />
-                <Route path="/login" exact component={SignInForm} />
-                <Route path="/signup" exact component={RegistrationForm} />
+                {/*<Route path="/login" exact component={SignInForm} />*/}
+                {/*<Route path="/signup" exact component={RegistrationForm} />*/}
                 <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
                 <Route
                   path='/gardens/:id'
