@@ -4485,6 +4485,11 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
+moment-js@^1.1.15:
+  version "1.1.15"
+  resolved "https://registry.yarnpkg.com/moment-js/-/moment-js-1.1.15.tgz#28da79be3bf2bc4a3dffd2b8368c28e863caa9d5"
+  integrity sha1-KNp5vjvyvEo9/9K4Nowo6GPKqdU=
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
