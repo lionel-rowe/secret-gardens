@@ -44,7 +44,7 @@ class Api::V1::GardensController < Api::V1::BaseController
   end
 
   def garden_params
-    params.require(:garden).permit(:name, :description, :price, :photo, :location, :user_id)
+    params.require(:garden).permit(:name, :description, :price, :photo, :external_pic, :location, :user_id)
   end
 
   def render_error

@@ -43,13 +43,12 @@ class GardenCard extends React.Component {
 
   render () {
     const garden = this.props.garden;
-    const name = this.props.garden.name;
-    const photo = this.props.garden.photo;
-    const description = this.props.garden.description;
     const { classes } = this.props;
-    const limitText = description.length > 70 ? description.slice(0, 70) + "..." : description;
 
-    const bgImg = photo.url ? cloudinarify(photo.url) : defaultImg;
+    const { name, photo, description, external_pic } = garden;
+    const bgImg = external_pic || photo.url || defaultImg;
+
+    const limitText = description.length > 70 ? description.slice(0, 70) + "..." : description;
 
     return (
       <Link className={classes.cardMedia} to={`gardens/${garden.id}`} key={garden.id} className='unstyled-link' variant="contained" color="primary">

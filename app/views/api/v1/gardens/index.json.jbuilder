@@ -8,6 +8,6 @@
 
 json.gardens do
   json.array! @gardens do |garden|
-    json.extract! garden, :id, :name, :description, :photo #, :host_id
+    json.extract! garden, :id, :name, :description, :photo, :external_pic #, :host_id
   end
 end
