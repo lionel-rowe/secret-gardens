@@ -18,6 +18,7 @@ import Bookings from './Bookings.js';
 import NewBooking from './NewBooking.js';
 
 import apiUrl from './getApiUrl.js';
+import Splash from './Splash.js';
 
 const theme = createMuiTheme({
   palette: {
@@ -88,6 +89,7 @@ export default class App extends React.Component {
                 }} />
                 <Route path="/bookings" exact component={Bookings} />
                 <Route path="/newbooking" exact component={NewBooking} />
+                <Route path="/splash" exact component={Splash} />
                 {/*<Route path="/login" exact component={SignInForm} />*/}
                 {/*<Route path="/signup" exact component={RegistrationForm} />*/}
                 <Route path="/gardens/new" exact component={() => <New refreshData={this.refreshData} />} />
