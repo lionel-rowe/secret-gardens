@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  acts_as_token_authenticatable
-
+  has_secure_token
   # Note: you can include any module you want. If available,
   # token authentication will be performed before any other
   # Devise authentication method.
