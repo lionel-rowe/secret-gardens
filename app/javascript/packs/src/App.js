@@ -17,6 +17,7 @@ import Bookings from './Bookings.js';
 import NewBooking from './NewBooking.js';
 
 import apiUrl from './getApiUrl.js';
+import Splash from './Splash.js';
 
 const theme = createMuiTheme({
   palette: {
