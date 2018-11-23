@@ -1,7 +1,6 @@
 import React from 'react';
 
 import SignInForm from './SignInForm.js';
-import RegistrationForm from './RegistrationForm.js';
 import Navbar from './components/Navbar.js';
 import BottomNav from './components/BottomNav.js';
 
@@ -81,7 +80,7 @@ export default class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        {!localStorage.token
+        {(!localStorage.token || !localStorage.uid)
           ? (<Router><SignInForm refreshData={this.refreshData} /></Router>)
           : (<Router>
               <div>

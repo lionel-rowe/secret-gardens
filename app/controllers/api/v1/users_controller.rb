@@ -16,7 +16,11 @@ class Api::V1::UsersController < Api::V1::BaseController
             render json: {error: "Login failed, please try again!"}
         else
             if @user.valid_password?(params[:password])
-                render json: {token: @user.token}
+                render json: {
+                  token: @user.token,
+                  uid: @user.id,
+                  email: @user.email
+                }
             else
                 render json: {error: "Login failed, please try again!"}
             end
