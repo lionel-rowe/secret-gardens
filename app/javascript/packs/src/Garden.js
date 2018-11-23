@@ -21,11 +21,10 @@ const styles = theme => ({
 function Garden(props) {
   const { classes } = props;
 
-  const garden = props.garden || { name: '', photo: {url: null}, description: '' };
+  const garden = props.garden || { name: '', photo: {url: null}, description: '', external_pic: null };
 
-  const { name, photo, description } = garden;
-
-  const bgImg = photo.url ? cloudinarify(photo.url) : defaultImg;
+  const { name, photo, description, external_pic } = garden;
+  const bgImg = external_pic || photo.url || defaultImg;
 
   return (
     <div>

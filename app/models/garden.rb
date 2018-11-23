@@ -9,3 +9,4 @@ class Garden < ApplicationRecord
   validates :location, presence: true
   validates :price, presence: true
 end
+
