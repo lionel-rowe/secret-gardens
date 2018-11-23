@@ -31,7 +31,7 @@ class Bookings extends React.Component  {
   constructor(props){
     super(props)
     this.state = {
-      data: []
+      bookings: []
     }
   }
 
@@ -48,7 +48,7 @@ class Bookings extends React.Component  {
       console.log(data)
 
       this.setState({
-        data: data
+        bookings: data.bookings
       });
     });
   }
@@ -67,7 +67,7 @@ class Bookings extends React.Component  {
       <div><CenteredTabs /></div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           <Grid container spacing={40}>
-            {this.state.data.bookings.map(booking => (
+            {this.state.bookings.map(booking => (
               <Grid item key={booking.id} sm={6} md={4} lg={3}>
               <BookingCard booking={booking} classes={classes} />
               </Grid>
